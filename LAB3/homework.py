@@ -1,8 +1,14 @@
 import requests
 import os
+import json
 from bs4 import BeautifulSoup
 
 os.system('clear')
+
+fileName = "urls.json"
+
+with open(fileName, "r") as json_file:
+    urls = json.load(json_file)
 
 
 def infoExtracter(url, info):
@@ -45,6 +51,6 @@ def infoExtracter(url, info):
 
 
 info = {}
-url = 'https://999.md/ro/84334590'
+url = urls[0]
 infoExtracter(url, info)
 # print(urls)

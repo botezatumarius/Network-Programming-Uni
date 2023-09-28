@@ -1,3 +1,4 @@
+import json
 import requests
 import os
 from bs4 import BeautifulSoup
@@ -33,6 +34,11 @@ def urlExtracter(url, urls, carNames, pageNumber, lastPage="null"):
 url = 'https://999.md/ro/list/transport/cars'
 urls = []
 carNames = []
+fileName = "urls.json"
 
 urlExtracter(url, urls, carNames, 1)
 # print(urls)
+# with open(fileName, "w") as json_file:
+# json.dump(urls, json_file)
+
+# json_file.close()
