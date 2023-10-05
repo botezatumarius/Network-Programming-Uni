@@ -40,7 +40,7 @@ def handle_request(client_socket):
     # Parse the request to get the HTTP method and path
     request_lines = request_data.split('\n')
     request_line = request_lines[0].strip().split()
-    method = request_line[0]
+    # method = request_line[0]
     path = request_line[1]
     # Initialize the response content and status code
     response_content = ''
@@ -48,11 +48,11 @@ def handle_request(client_socket):
     # Define a simple routing mechanism
     if path == '/':
         # sleep(15)
-        response_content = 'Home page'
+        response_content = '<p>Home page<p>'
     elif path == '/about':
-        response_content = 'About page'
+        response_content = '<p>About page</p>'
     elif path == '/contacts':
-        response_content = 'Contacts page'
+        response_content = '<p>Contacts page</p>'
     elif path == '/products':
         productList = """
         <h1>Product list </h1>
@@ -69,11 +69,11 @@ def handle_request(client_socket):
                 author = product.get("author")
                 price = product.get("price")
                 description = product.get("description")
-                productTemplate = f"""Product number: {productNumber+1 if productNumber != -1 else ""}<br>
-                Name: {name}<br>
-                Author: {author}<br>
-                Price: {price if price != -1 else ""}<br>
-                Description: {description}"""
+                productTemplate = f"""<p>Product number:{productNumber+1 if productNumber != -1 else ""}</p><br>
+                <p>Name:{name}<br></p>
+                <p>Author:{author}<br></p>
+                <p>Price:{price if price != -1 else ""}<br></p>
+                <p>Description:{description}</p>"""
                 response_content = productTemplate
                 break
             else:
